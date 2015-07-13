@@ -13,12 +13,12 @@ var mainState = {
     game.load.image(mainCharacter.name, mainCharacter.sprite);
     game.load.image('block', 'assets/img/blackTile.png');
     game.load.image('platform', 'assets/img/orangePlatform.png');
-    game.load.image('itemSprite'/*'square'*/, 'assets/img/brownSquare.png');
+    game.load.image('square', 'assets/img/brownSquare.png');
     game.time.advancedTiming = true;  // this is need to print out fps in render function
 
-    game.load.tilemap('level1', 'assets/tilemaps/firstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('gameTiles', 'assets/img/tileset.png');
 
+    game.load.tilemap('level1', 'assets/tilemaps/firstTileMap.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.spritesheet('gameTiles', 'assets/img/tileset.png', 16, 16);
   },
 
 
@@ -92,7 +92,8 @@ var mainState = {
   },
 
   createFromTiledObject: function(element, group) {
-    var sprite = group.create(element.x, element.y, element.properties.sprite);
+    var sprite = group.create(element.x, element.y, 'gameTiles');//element.properties.sprite);
+    sprite.frame = (element.gid-1);  // the frame in the spritesheet starts at zero instead of 1, so it's the object's gid - 1
     // copy all properties to the sprite
     Object.keys(element.properties).forEach(function(key) {
       sprite[key] = element.properties[key];
@@ -102,7 +103,6 @@ var mainState = {
   createItems: function() {
     this.items = game.add.group();
     this.items.enableBody = true;
-    var item;
     result = this.findObjectsByType('item', this.map, 'Object Layer 1');
     result.forEach(function(element) {
       this.createFromTiledObject(element, this.items);

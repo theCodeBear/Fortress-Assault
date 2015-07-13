@@ -32,9 +32,8 @@ var worldSetup = {
     // game.add.sprite(700, 680, 'platform', 0, state.platforms);
     // game.add.sprite(875, 680, 'platform', 0, state.platforms);
 
-    // // 32x32 square
+    // // 16x16 square
     // state.square = game.add.sprite(400,600, 'square');
-    // state.square.scale.setTo(0.5,0.5);
     // game.physics.arcade.enable(state.square);
     // state.square.enableBody = true;
     // state.square.body.allowGravity = false;
