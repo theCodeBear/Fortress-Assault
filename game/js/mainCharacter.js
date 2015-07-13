@@ -6,15 +6,15 @@ var mainCharacter = {
   jump: 400,
   movingHoriz: '',
   movingVert: '',
-  sprite: 'img/greenDiskBase.png',
-  scale: { x: 0.5, y: 0.5 },
+  sprite: 'assets/img/greenDiskBase.png',
+  scale: { x: 0.35, y: 0.35 },
 
   // call: mainCharacter.move(this);
   move: function(state) {
     // run
     state.runKey.isDown ? this.run = 2 : this.run = 1;
     // jump
-    if (state.cursors.up.isDown && state.player.body.touching.down) {
+    if (state.cursors.up.isDown/* && state.player.body.touching.down*/) {
       state.player.body.velocity.y = -this.jump;
     }
     // moving horizontally

@@ -18,27 +18,44 @@ var worldSetup = {
   },
 
   buildPlatforms: function(state) {
-    state.platforms = game.add.group();
-    state.platforms.enableBody = true;
-    game.add.sprite(100, 100, 'platform', 0, state.platforms);
-    game.add.sprite(100, 600, 'platform', 0, state.platforms);
-    game.add.sprite(400, 650, 'platform', 0, state.platforms);
-    game.add.sprite(580, 650, 'platform', 0, state.platforms);
-    //floor
-    game.add.sprite(0, 680, 'platform', 0, state.platforms);
-    game.add.sprite(175, 680, 'platform', 0, state.platforms);
-    game.add.sprite(350, 680, 'platform', 0, state.platforms);
-    game.add.sprite(525, 680, 'platform', 0, state.platforms);
-    game.add.sprite(700, 680, 'platform', 0, state.platforms);
-    game.add.sprite(875, 680, 'platform', 0, state.platforms);
+    // state.platforms = game.add.group();
+    // state.platforms.enableBody = true;
+    // game.add.sprite(100, 100, 'platform', 0, state.platforms);
+    // game.add.sprite(100, 600, 'platform', 0, state.platforms);
+    // game.add.sprite(400, 650, 'platform', 0, state.platforms);
+    // game.add.sprite(580, 650, 'platform', 0, state.platforms);
+    // //floor
+    // game.add.sprite(0, 680, 'platform', 0, state.platforms);
+    // game.add.sprite(175, 680, 'platform', 0, state.platforms);
+    // game.add.sprite(350, 680, 'platform', 0, state.platforms);
+    // game.add.sprite(525, 680, 'platform', 0, state.platforms);
+    // game.add.sprite(700, 680, 'platform', 0, state.platforms);
+    // game.add.sprite(875, 680, 'platform', 0, state.platforms);
 
-    state.platforms.setAll('body.allowGravity', false);
-    state.platforms.setAll('body.immovable', true);
+    // // 32x32 square
+    // state.square = game.add.sprite(400,600, 'square');
+    // state.square.scale.setTo(0.5,0.5);
+    // game.physics.arcade.enable(state.square);
+    // state.square.enableBody = true;
+    // state.square.body.allowGravity = false;
+    // state.square.body.immovable = true;
+
+    // state.platforms.setAll('body.allowGravity', false);
+    // state.platforms.setAll('body.immovable', true);
   },
 
   createPlayer: function(state) {
-    state.player = game.add.sprite(200,200, mainCharacter.name);
-    state.player.scale.setTo(0.5,0.5);
+    // state.player = game.add.sprite(200,200, mainCharacter.name);
+    // state.player.scale.setTo(mainCharacter.scale.x, mainCharacter.scale.y);
+    // game.physics.arcade.enable(state.player);
+    // state.player.enableBody = true;
+    // state.player.body.collideWorldBounds = true;
+
+    var result = state.findObjectsByType('playerStart', state.map, 'Object Layer 1');
+    // we know there is just one result
+    state.player = game.add.sprite(result[0].x, result[0].y, mainCharacter.name);
+    game.physics.arcade.enable(state.player);
+    state.player.scale.setTo(mainCharacter.scale.x, mainCharacter.scale.y);
     game.physics.arcade.enable(state.player);
     state.player.enableBody = true;
     state.player.body.collideWorldBounds = true;
