@@ -52,7 +52,6 @@ var mainState = {
 
 
     items.create(this);
-    // this.createPlayer();
     worldSetup.createPlayer(this);
   },
 
@@ -76,7 +75,7 @@ var mainState = {
 
   render: function() {
     game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-  },
+  }
 
 };
 
