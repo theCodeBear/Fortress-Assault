@@ -50,7 +50,7 @@ var worldSetup = {
     // state.player.enableBody = true;
     // state.player.body.collideWorldBounds = true;
 
-    var result = state.findObjectsByType('playerStart', state.map, 'Object Layer 1');
+    var result = tilemapsHandler.findObjectsByType('playerStart', state.map, 'Object Layer 1');
     // we know there is just one result
     state.player = game.add.sprite(result[0].x, result[0].y, mainCharacter.name);
     game.physics.arcade.enable(state.player);

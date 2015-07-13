@@ -38,7 +38,7 @@ var mainState = {
     //   this.platforms, this.player
     // ];
 
-    // cerate map
+    // create map
     this.map = this.game.add.tilemap('level1');
     // first parameter is the what I called the tileset name in Tilded, second parameter is the key to the asset as specified above in preload()
     this.map.addTilesetImage('scifi_platformTiles_16x16', 'gameTiles');
@@ -51,7 +51,7 @@ var mainState = {
     // this.blockedLayer.resizeWorld();
 
 
-    this.createItems();
+    items.create(this);
     // this.createPlayer();
     worldSetup.createPlayer(this);
   },
@@ -78,52 +78,7 @@ var mainState = {
     game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
   },
 
-
-  findObjectsByType: function(type, map, layer) {
-    var result = new Array();
-    map.objects[layer].forEach(function(element) {
-      if (element.properties.type === type) {
-        //Phaser uses top left, Tiled bottom left so we have to adjust the y position
-        element.y -= map.tileHeight;
-        result.push(element);
-      }
-    });
-    return result;
-  },
-
-  createFromTiledObject: function(element, group) {
-    var sprite = group.create(element.x, element.y, 'gameTiles');//element.properties.sprite);
-    sprite.frame = (element.gid-1);  // the frame in the spritesheet starts at zero instead of 1, so it's the object's gid - 1
-    // copy all properties to the sprite
-    Object.keys(element.properties).forEach(function(key) {
-      sprite[key] = element.properties[key];
-    });
-  },
-
-  createItems: function() {
-    this.items = game.add.group();
-    this.items.enableBody = true;
-    result = this.findObjectsByType('item', this.map, 'Object Layer 1');
-    result.forEach(function(element) {
-      this.createFromTiledObject(element, this.items);
-    }, this);
-    this.items.setAll('body.allowGravity', false);
-  },
-
-  createPlayer: function() {
-    var result = this.findObjectsByType('playerStart', this.map, 'Object Layer 1');
-    // we know there is just one result
-    this.player = this.game.add.sprite(result[0].x, result[0].y, mainCharacter.name);
-    this.game.physics.arcade.enable(this.player);
-  },
-
-  collect: function(player, collectable) {
-    console.log('yummy');
-    collectable.destroy();
-  }
-
-
-}
+};
 
 game.state.add('main', mainState);
 game.state.start('main');

@@ -9,7 +9,7 @@ var physics = {
     // game.physics.arcade.collide(state.player, state.square);
 
     game.physics.arcade.collide(state.player, state.blockedLayer);
-    game.physics.arcade.overlap(state.player, state.items, state.collect, null, this);
+    game.physics.arcade.overlap(state.player, state.items, items.collectOne, null, state);
   }
 
 };
