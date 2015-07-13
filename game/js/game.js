@@ -27,6 +27,11 @@ var mainState = {
     worldSetup.createPlayer(this);
     worldSetup.registerInputs(this);
     // game.camera.follow(this.player);
+
+    // attempt at fixing zooming
+    // this.collection = [
+    //   this.platforms, this.player
+    // ];
   },
 
 
@@ -38,8 +43,7 @@ var mainState = {
     camera.scroll(this);    
     physics.checkAllCollisions(this);
 
-    camera.zoom(this);
-    
+    camera.handleZoom(this);
 
     mainCharacter.move(this);
 

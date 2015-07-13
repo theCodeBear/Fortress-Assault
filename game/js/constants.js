@@ -1,6 +1,7 @@
 const keys = {
   ZOOM_IN: { keycode: 222, keyname: 'single quote' },
-  ZOOM_OUT: { keycode: 191, keyname: 'question mark' }
+  ZOOM_OUT: { keycode: 191, keyname: 'question mark' },
+  RUN: { keycode: 16, keyname: 'shift' }
 };
 
 const GAME_WIDTH = 1200;

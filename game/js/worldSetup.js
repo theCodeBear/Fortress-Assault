@@ -23,6 +23,15 @@ var worldSetup = {
     game.add.sprite(100, 100, 'platform', 0, state.platforms);
     game.add.sprite(100, 600, 'platform', 0, state.platforms);
     game.add.sprite(400, 650, 'platform', 0, state.platforms);
+    game.add.sprite(580, 650, 'platform', 0, state.platforms);
+    //floor
+    game.add.sprite(0, 680, 'platform', 0, state.platforms);
+    game.add.sprite(175, 680, 'platform', 0, state.platforms);
+    game.add.sprite(350, 680, 'platform', 0, state.platforms);
+    game.add.sprite(525, 680, 'platform', 0, state.platforms);
+    game.add.sprite(700, 680, 'platform', 0, state.platforms);
+    game.add.sprite(875, 680, 'platform', 0, state.platforms);
+
     state.platforms.setAll('body.allowGravity', false);
     state.platforms.setAll('body.immovable', true);
   },
@@ -37,8 +46,9 @@ var worldSetup = {
 
   registerInputs: function(state) {
     state.cursors = game.input.keyboard.createCursorKeys();
-    state.zoomIn = game.input.keyboard.addKey(keys.ZOOM_IN.keycode);
-    state.zoomOut = game.input.keyboard.addKey(keys.ZOOM_OUT.keycode);
+    state.zoomInKey = game.input.keyboard.addKey(keys.ZOOM_IN.keycode);
+    state.zoomOutKey = game.input.keyboard.addKey(keys.ZOOM_OUT.keycode);
+    state.runKey = game.input.keyboard.addKey(keys.RUN.keycode);
   }
 
 };
